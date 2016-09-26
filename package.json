@@ -4,7 +4,10 @@
   "description": "Game On MVP",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "nodemon lib/index.js --exec babel-node",
+    "build": "babel lib -d dist",
+    "serve": "node dist/index.js",
+    "test": "mocha --compilers js:babel-register"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/Rolandkuku/game-on/issues"
   },
-  "homepage": "https://github.com/Rolandkuku/game-on#readme"
+  "homepage": "https://github.com/Rolandkuku/game-on#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-2": "^6.13.0",
+    "babel-register": "^6.14.0",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.10.2"
+  }
 }
