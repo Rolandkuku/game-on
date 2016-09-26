@@ -1,0 +1,19 @@
+{
+  "name": "game-on",
+  "version": "0.0.1",
+  "description": "Game On MVP",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rolandkuku/game-on.git"
+  },
+  "author": "Roland Kullet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rolandkuku/game-on/issues"
+  },
+  "homepage": "https://github.com/Rolandkuku/game-on#readme"
+}
