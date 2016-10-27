@@ -8,7 +8,7 @@
     "build-server": "babel lib -d dist",
     "build-app": "babel public/js/lib -d public/js/dist",
     "watch-server": "babel lib --watch --out-dir dist",
-    "watch-app": "node webAppServer.js",
+    "watch-app": "webpack -d --watch --config webpack.config.js",
     "serve": "node dist/index.js",
     "test": "mocha --compilers js:babel-register"
   },
@@ -39,6 +39,7 @@
     "webpack-dev-server": "^1.16.1"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "react-redux": "^4.4.5"
   }
 }
