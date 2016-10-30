@@ -1,18 +1,22 @@
 import React, { PropTypes as T } from "react";
 
+
 const User = ({ onSavedClicked, saved, name }) => {
-    <li style={{ display: "flex" }}>
-        <p
-            style={{textDecoration: saved ? "color": "green"}}
-        >
-            {name}
-        </p>
-        <button
-            onClick={onSavedClicked}
-        >
-            Save
-        </button>
-    </li>
+    let btnText = saved ? "Unsave" : "Save";
+    return (
+        <li style={{ display: "flex" }}>
+            <p
+                style={{textDecoration: saved ? "color": "green"}}
+            >
+                {name}
+            </p>
+            <button type="button"
+                onClick={onSavedClicked}
+            >
+                {btnText}
+            </button>
+        </li>
+    )
 };
 
 User.propTypes = {

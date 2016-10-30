@@ -1,21 +1,19 @@
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
 import { createStore } from "redux";
-import { saveUser, addUser, setVisibilityFilter, VisibilityFilters } from "./actions";
 import userApp from "./reducers";
+import App from "./components/app.js";
 
 let store = createStore(userApp);
 
-// Testing purpose
-// let unsubscribe = store.subscribe(() =>
-//   console.log(store.getState())
-// );
-//
-// store.dispatch(addUser("toto", "pdwToto"));
-// store.dispatch(addUser("tutu", "pdwTutu"));
-// store.dispatch(addUser("tata", "pdwTata"));
-// store.dispatch(saveUser(0));
-// store.dispatch(saveUser(2));
-// store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_SAVED));
-//
-//
-// // Stop listening to state updates
-// unsubscribe();
+let unsubsbcribe = store.subscribe(() => {
+    console.log(store.getState());
+});
+
+render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById("redux-app")
+);

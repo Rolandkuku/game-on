@@ -1,7 +1,9 @@
 export const ADD_USER = "ADD_USER";
 export const SAVE_USER = "SAVE_USER";
+export const UNSAVE_USER = "UNSAVE_USER";
 export const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
 
+let nextUserId = 0;
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
@@ -20,13 +22,20 @@ export const addUser = (name, email) => {
         user: {
             saved: false,
             name: name,
-            email: email
+            email: email,
+            id: nextUserId++
         }
     };
 };
 
-export const saveUser = (index) => {
+export const saveUser = (index, saved) => {
     /* Saving user... please wait.. */
+    if (saved) {
+        return {
+            type: UNSAVE_USER,
+            index: index
+        }
+    }
     return {
         type: SAVE_USER,
         index: index

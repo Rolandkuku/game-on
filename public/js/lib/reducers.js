@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
-import { User, addUser } from "./model/User";
-import { VisibilityFilters, SAVE_USER, ADD_USER, SET_VISIBILITY_FILTER } from "./actions";
+import { VisibilityFilters, SAVE_USER, ADD_USER, SET_VISIBILITY_FILTER, UNSAVE_USER } from "./actions";
 const { SHOW_ALL, SHOW_SAVED } = VisibilityFilters;
 
 const initialSate = {
@@ -25,7 +24,19 @@ const users = (state = [], action) => {
                     };
                 }
                 return user;
-            })
+            });
+            break;
+        case UNSAVE_USER:
+            return state.map((user, index) => {
+                if (index === action.index) {
+                    return {
+                        ...user,
+                        saved: false
+                    };
+                }
+                return user;
+            });
+            break;
         default:
             return state;
 
