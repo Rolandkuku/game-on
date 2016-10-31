@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'eval',
   entry: [
     //'http://localhost:3000',
-    './public/js/lib/app.js'
+    './public/js/lib/main.js'
   ],
   output: {
     path: path.join(__dirname, 'public/dist'),
