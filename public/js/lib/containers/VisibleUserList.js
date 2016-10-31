@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { saveUser } from '../actions'
+import { saveUser, focusUser } from '../actions'
 import UserList from '../components/UserList'
 
 const getVisibleUsers = (users, filter) => {
@@ -25,6 +25,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onUserSavedClicked: (id, saved) => {
             dispatch(saveUser(id, saved));
+        },
+        onUserTextClicked: (id) => {
+            dispatch(focusUser(id));
         }
     };
 };

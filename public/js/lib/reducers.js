@@ -1,5 +1,12 @@
 import { combineReducers } from "redux";
-import { VisibilityFilters, SAVE_USER, ADD_USER, SET_VISIBILITY_FILTER, UNSAVE_USER } from "./actions";
+import {
+    VisibilityFilters,
+    SAVE_USER,
+    ADD_USER,
+    SET_VISIBILITY_FILTER,
+    UNSAVE_USER,
+    FOCUS_USER
+} from "./actions";
 const { SHOW_ALL, SHOW_SAVED } = VisibilityFilters;
 
 const initialSate = {
@@ -37,6 +44,14 @@ const users = (state = [], action) => {
                 return user;
             });
             break;
+        case FOCUS_USER:
+            return state.map((user, index) => {
+                let focused = index === action.index ? true : false;
+                return {
+                    ...user,
+                    focused: focused
+                };
+            });
         default:
             return state;
 

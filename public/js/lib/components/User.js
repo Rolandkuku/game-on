@@ -1,12 +1,13 @@
 import React, { PropTypes as T } from "react";
 
 
-const User = ({ onSavedClicked, saved, name }) => {
+const User = ({ onSavedClicked, onUserClicked, saved, name }) => {
     let btnText = saved ? "Unsave" : "Save";
     return (
         <li style={{ display: "flex" }}>
             <p
-                style={{textDecoration: saved ? "color": "green"}}
+                style={{color: saved ? "color": "green"}}
+                onClick={onUserClicked}
             >
                 {name}
             </p>
@@ -21,6 +22,7 @@ const User = ({ onSavedClicked, saved, name }) => {
 
 User.propTypes = {
     onSavedClicked: T.func.isRequired,
+    onUserClicked: T.func.isRequired,
     saved: T.bool.isRequired,
     name: T.string.isRequired
 };

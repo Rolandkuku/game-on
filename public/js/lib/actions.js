@@ -1,6 +1,7 @@
 export const ADD_USER = "ADD_USER";
 export const SAVE_USER = "SAVE_USER";
 export const UNSAVE_USER = "UNSAVE_USER";
+export const FOCUS_USER = "FOCUS_USER";
 export const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
 
 let nextUserId = 0;
@@ -22,9 +23,17 @@ export const addUser = (name, email) => {
         user: {
             saved: false,
             name: name,
-            email: email,
+            email: email ? email : "",
+            focused: false,
             id: nextUserId++
         }
+    };
+};
+
+export const focusUser = (index) => {
+    return {
+        type: FOCUS_USER,
+        index: index
     };
 };
 
@@ -34,7 +43,7 @@ export const saveUser = (index, saved) => {
         return {
             type: UNSAVE_USER,
             index: index
-        }
+        };
     }
     return {
         type: SAVE_USER,
