@@ -9,7 +9,6 @@ const ExampleApp = {
     startApp: () => {
         let store = createStore(userApp);
 
-
         render(
             <Provider store={store}>
             <App />
