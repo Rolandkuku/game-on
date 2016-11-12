@@ -21,7 +21,7 @@ const AuthApp = {
                 </Provider>
             </MuiThemeProvider>,
             document.getElementById("redux-app")
-        )
+        );
     }
 };
 

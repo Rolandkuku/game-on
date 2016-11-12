@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { switchAuthType } from "../actions";
-import LogBox from "../components/LogBox";
+import LogBox from "../components/LogBox.jsx";
 
 const mapStateToProps = (state) => {
     return {
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSwitchLogTypeClicked: () => {
+        onSwithAuthTypeClicked: () => {
             dispatch(switchAuthType());
         }
     };

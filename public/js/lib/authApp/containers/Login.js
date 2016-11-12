@@ -1,5 +1,6 @@
-import { connect } from "react-redux";
-import LoginForm from "../components/LoginForm";
+import {connect} from "react-redux";
+import {login} from "../actions";
+import LoginForm from "../components/LoginForm.jsx";
 
 const mapStateToProps = (state) => {
     return {
@@ -9,8 +10,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {};
-}
+    return {
+        onLoginFormSubimt: (formData) => {
+            dispatch(login(formData));
+        }
+    };
+};
 
 const Login = connect(
     mapStateToProps,

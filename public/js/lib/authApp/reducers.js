@@ -1,25 +1,18 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 import {
-    CHECK_LOGIN_INPUTS,
-    CHECK_SUBSCRIBE_INPUTS,
+    CHECK_FORM_ERRORS,
     SAVE_USER,
-    SWITCH_AUTH_TYPE,
-    subscribeFormErrors
+    LOG_IN,
+    SWITCH_AUTH_TYPE
 } from "./actions";
 
-const initialSate = {
-    authType: "login",
-    user: [],
-    errors: []
-};
 
 
 /* Handles an array of error */
 const errors = (state = [], action) => {
     switch(action.type) {
-        case CHECK_SUBSCRIBE_INPUTS:
+        case CHECK_FORM_ERRORS:
             return action.errors;
-            break;
         default:
             return state;
     }
@@ -28,28 +21,29 @@ const errors = (state = [], action) => {
 const user = (state = {}, action) => {
     switch(action.type) {
         case SAVE_USER:
-            // TODO : Save users
             console.info("USER SAVED !");
             return action.user;
-            break;
+        case LOG_IN:
+            console.info("USER LOGGED !");
+            return action.user;
         default:
             return state;
     }
-}
+};
 
 const authType = (state = "login", action) => {
     switch (action.type) {
         case SWITCH_AUTH_TYPE:
             return state === "login" ? "subscribe" : "login";
-            break;
         default:
             return state;
     }
-}
+};
 
 const authApp = combineReducers({
     errors,
-    user
+    user,
+    authType
 });
 
 export default authApp;
