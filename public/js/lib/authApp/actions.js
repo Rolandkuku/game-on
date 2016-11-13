@@ -1,7 +1,8 @@
 export const CHECK_FORM_ERRORS = "CHECK_FORM_ERRORS";
-export const SAVE_USER = "SAVE_USER";
 export const SWITCH_AUTH_TYPE = "SWITCH_AUTH_TYPE";
+export const SUBSCRIBE = "SUBSCRIBE";
 export const LOG_IN = "LOG_IN";
+export const UPDATE_USER = "UPDATE_USER";
 
 
 const setUser = (formData) => {
@@ -23,13 +24,7 @@ const logUser = (formData) => {
 
 const checkErrors = (formData) => {
     const errors = [];
-    // if (!formData.name || formData.name.length === 0) {
-    //     errors.push({
-    //         inputName: "name",
-    //         label: "Name cannot be empty",
-    //         pass: false
-    //     });
-    // }
+    // TODO : refactor this
     if (!formData.password || formData.password.length === 0) {
         errors.push({
             inputName: "password",
@@ -56,7 +51,7 @@ export const subscribe = (formData) => {
         };
     }
     return {
-        type: SAVE_USER,
+        type: SUBSCRIBE,
         user: setUser(formData)
     };
 };
@@ -75,8 +70,22 @@ export const login = (formData) => {
     };
 };
 
+export const updateUser = (formData) => {
+    if (formData) {
+        return setUser(formData);
+    }
+};
+
 export const switchAuthType = () => {
     return {
         type: SWITCH_AUTH_TYPE
+    };
+};
+
+export const userInputChanged = (target) => {
+    return {
+        type: UPDATE_USER,
+        attribute: target.name,
+        value: target.value
     };
 };

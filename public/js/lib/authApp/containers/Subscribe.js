@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {subscribe} from "../actions";
+import {subscribe, userInputChanged} from "../actions";
 import SubscribeForm from "../components/SubscribeForm.jsx";
 
 const mapStateToProps = (state) => {
@@ -19,6 +19,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onUserSubscribeSubmit: (formData) => {
             dispatch(subscribe(formData));
+        },
+        inputChanged: (ev) => {
+            userInputChanged(ev.target);
         }
     };
 };

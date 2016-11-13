@@ -1,9 +1,10 @@
 import {combineReducers} from "redux";
 import {
     CHECK_FORM_ERRORS,
-    SAVE_USER,
+    SUBSCRIBE,
     LOG_IN,
-    SWITCH_AUTH_TYPE
+    SWITCH_AUTH_TYPE,
+    UPDATE_USER
 } from "./actions";
 
 
@@ -20,7 +21,10 @@ const errors = (state = [], action) => {
 
 const user = (state = {}, action) => {
     switch(action.type) {
-        case SAVE_USER:
+        case UPDATE_USER:
+            state.user[action.attribute] = action.value;
+            return state.user;
+        case SUBSCRIBE:
             console.info("USER SAVED !");
             return action.user;
         case LOG_IN:

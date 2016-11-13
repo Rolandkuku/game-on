@@ -6,7 +6,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 
 const style = {
     margin: 12
-}
+};
 
 export default class LogBox extends React.Component {
     render () {
@@ -19,7 +19,7 @@ export default class LogBox extends React.Component {
                 </CardText>
                 <CardActions>
                     <FlatButton
-                        label="Swith auth type"
+                        label="Switch auth type"
                         primary={true}
                         style={style}
                         onClick={this.props.onSwithAuthTypeClicked} />
@@ -30,13 +30,13 @@ export default class LogBox extends React.Component {
 
     renderBox(authType) {
         if (authType === "login") {
-            return <Login />
+            return <Login />;
         }
-        return <Subscribe />
+        return <Subscribe />;
     }
 }
 
-LogBox.propType = {
+LogBox.propTypes = {
     authType: T.string.isRequired,
     onSwithAuthTypeClicked: T.func.isRequired
 };

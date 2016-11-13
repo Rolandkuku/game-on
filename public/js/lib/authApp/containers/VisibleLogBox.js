@@ -6,7 +6,7 @@ const mapStateToProps = (state) => {
     return {
         authType: state.authType
     };
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {

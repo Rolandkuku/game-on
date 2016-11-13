@@ -37,7 +37,7 @@
     "no-regex-spaces": "warn", // disallow multiple spaces in a regular expression literal
     "no-sparse-arrays": "warn", // disallow sparse arrays
     "no-unreachable": "warn", // disallow unreachable statements after a return, throw, continue, or break statement
-    "no-unsafe-negation": "error",
+    "no-unsafe-negation": "warn",
     "valid-jsdoc": "warn", // Ensure JSDoc comments are valid (off by default)
 
     /* Best practices */

@@ -5,6 +5,16 @@ import FlatButton from "material-ui/FlatButton";
 
 export default class SubscribeForm extends React.PureComponent {
 
+    constructor(props) {
+        super(props);
+        if (!this.user) {
+            this.user = {
+                email: "",
+                password: ""
+            };
+        }
+    }
+
     render() {
         const {email, password} = this.props.user;
         return (
@@ -17,44 +27,38 @@ export default class SubscribeForm extends React.PureComponent {
                     >
                     <TextField
                         type="text"
+                        name="email"
                         hintText="Email"
                         defaultValue={email}
-                        onChange={this.emailChanged}
-                        style={this.highligthError("email")} />
+                        onChange={this.props.inputChanged}
+                        errorText={this.getErrorText("email")} />
                     <TextField
                         type="password"
+                        name="password"
                         hintText="Password"
                         defaultValue={password}
-                        onChange={this.passwordChanged}
-                        style={this.highligthError("password")} />
+                        onChange={this.props.inputChanged}
+                        errorText={this.getErrorText("password")}/>
                     <FlatButton
                         type="submit"
                         primary={true}
                         label="Subscribe" />
                 </form>
-                <ul>
-                    {this.renderErrors()}
-                </ul>
             </div>
         );
     }
 
-    renderErrors() {
-        if (this.props.errors) {
+    getErrorText(inputName) {
+        if(this.props.errors) {
             return (
-                this.props.errors.map((e, index) => (
-                    <li key={index}>{e.label}</li>
-                ))
-            );
-        }
-    }
-
-    highligthError(inputName) {
-        if (this.props.errors.length < 0) {
-            return (
-                {
-                    border: this.errors.filter(e => e.inputName === inputName).length === 0 ? "1px solid black" : "1px solid red"
-                }
+                this.props.errors.
+                    filter(e => {
+                        return e.inputName === inputName;
+                    })
+                    .map(e => {
+                        return e.label;
+                    })
+                    .join(", ")
             );
         }
     }
@@ -62,6 +66,7 @@ export default class SubscribeForm extends React.PureComponent {
 
 SubscribeForm.propTypes = {
     onUserSubscribeSubmit: T.func.isRequired,
+    inputChanged: T.func.isRequired,
     user: T.shape({
         email: T.string.isRequired,
         password: T.string.isRequired
